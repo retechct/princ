@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbf3f1"><title>Un regalo para ti · Día de la Princesa</title>
+<link rel="stylesheet" href="estilos.css"><script defer src="script.js"></script>
+</head>
+<body>
+<header><span class="mark" aria-hidden="true">♕</span> Con cariño <span class="date">18 de noviembre</span></header>
+<main>
+<section class="copy" aria-live="polite" aria-atomic="true">
+<p class="occasion"><span></span> Día de la Princesa</p>
+<h1 id="headline">Un regalo<br><em>para ti.</em></h1>
+<p id="message">Gordita, preparé esta cajita pensando en ti. Toca el botón cuando estés lista. ♡</p>
+<button id="action"><span aria-hidden="true">✧</span> <span id="label">Abrir mi regalo</span></button>
+</section>
+<div class="scene" id="scene">
+<div class="stars" aria-hidden="true"></div>
+<svg id="gift" viewBox="0 0 600 440" role="img" aria-label="Caja de regalo de terciopelo rosado con un lazo dorado">
+<defs>
+<linearGradient id="front" x2=".3" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#d289a2"/><stop offset=".3" stop-color="#bd697f"/><stop offset="1" stop-color="#823e56"/></linearGradient>
+<linearGradient id="side"><stop stop-color="#b35e79"/><stop offset="1" stop-color="#6d364e"/></linearGradient>
+<linearGradient id="gold" x1="0" x2="1" y1="0" y2=".2"><stop stop-color="#855335"/><stop offset=".18" stop-color="#e3b578"/><stop offset=".42" stop-color="#fff0c1"/><stop offset=".62" stop-color="#d9aa6b"/><stop offset="1" stop-color="#95603b"/></linearGradient>
+<linearGradient id="silk" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#fff4cf"/><stop offset=".24" stop-color="#f3d39a"/><stop offset=".48" stop-color="#b7804d"/><stop offset=".68" stop-color="#f4d79a"/><stop offset="1" stop-color="#a1683e"/></linearGradient>
+<radialGradient id="shadow"><stop stop-color="#432536" stop-opacity=".65"/><stop offset="1" stop-color="#48263e" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="302" cy="363" rx="213" ry="35" fill="url(#shadow)"/>
+<g id="base"><path d="M151 211l178 39v118l-178-43z" fill="url(#front)"/><path d="M329 250l122-49v117l-122 50z" fill="url(#side)"/>
+<path d="M221 226l38 9v116l-38-9z" fill="url(#gold)"/><path d="M155 319l173 42 119-49" fill="none" stroke="#d8a47f" opacity=".75"/></g>
+<g id="lid"><path d="M140 183l130-50 191 38-132 57z" fill="#e8a6b7"/><path d="M140 183l189 45v33l-189-46z" fill="url(#front)"/><path d="M329 228l132-57v32l-132 58z" fill="url(#side)"/>
+<path d="M141 211l188 46 131-57" fill="none" stroke="#ecc79a" stroke-width="2"/>
+<path d="M216 201l40 10 133-54-42-8z" fill="url(#silk)"/><path d="M216 201l40 10v32l-40-10z" fill="url(#gold)"/>
+<path d="M192 163l29-11 189 41-30 13z" fill="url(#silk)"/>
+<g fill="url(#silk)" stroke="#d6ab77" stroke-width="1">
+<path d="M300 176Q231 119 219 137Q200 170 291 181Q223 192 207 216l24-3 8 13q18-29 61-50z"/>
+<path d="M303 175Q350 100 370 123Q400 152 310 180Q354 172 383 195l-21-1-5 12q-17-23-54-31z"/>
+<path d="M300 176C265 159 205 154 218 132C230 103 276 121 300 176ZM299 169C273 130 242 123 229 131C245 130 276 160 299 169Z" fill-rule="evenodd"/>
+<path d="M305 176C320 127 352 97 372 116C401 142 350 167 305 176ZM314 168C348 152 370 134 369 123C354 123 330 148 314 168Z" fill-rule="evenodd"/>
+<path d="M287 168q6-13 21-9l10 14q-4 12-19 13z"/></g></g></svg>
+<canvas id="tiara" role="img" aria-label="Tiara tridimensional de oro con cristales rosados" hidden></canvas>
+<span class="ornament" aria-hidden="true">✦</span>
+</div>
+</main><noscript>Activa JavaScript para abrir la caja. ¡Feliz Día de la Princesa!</noscript>
+</body></html>
