@@ -10,11 +10,12 @@ const message = document.querySelector('#message');
 const label = document.querySelector('#label');
 const stars = document.querySelector('.stars');
 
-for (let i = 0; i < 52; i++) {
+for (let i = 0; i < 145; i++) {
   const star = document.createElement('i');
   star.textContent = i % 6 === 0 ? '✦' : '·';
   star.style.left = ((i * 61.803 + 9) % 100) + '%';
   star.style.top = ((i * i * 7.13 + 5) % 91) + '%';
+  star.style.setProperty('--delay', (-i % 9) + 's');
   stars.append(star);
 }
 
@@ -103,6 +104,24 @@ function render(time) {
       }
     }
   }
+  // Brief flashes follow the stones as the tiara turns.
+  for (let i = -2; i <= 2; i++) {
+    const glow = Math.max(0, Math.cos((time-revealTime)/670+i*2.4)) ** 14;
+    if (glow < .12) continue;
+    const tip = project(point(i*.47,170-Math.abs(i)*29));
+    const size = (4+8*glow)*scale;
+    ctx.save();
+    ctx.translate(tip.x,tip.y);
+    ctx.globalAlpha=glow*.85;
+    ctx.fillStyle='#fff4d1';
+    ctx.beginPath();
+    for(let j=0;j<8;j++){
+      const a=j*Math.PI/4;
+      const r=j%2 ? size*.13 : size;
+      ctx.lineTo(r*Math.cos(a),r*Math.sin(a));
+    }
+    ctx.closePath();ctx.fill();ctx.restore();
+  }
   if (!reducedMotion.matches) frame=requestAnimationFrame(render);
 }
 function redraw(){
@@ -115,22 +134,23 @@ action.addEventListener('click',()=>{
   if (action.getAttribute('aria-busy')==='true') return;
   opened=!opened;
   scene.classList.toggle('open',opened);
+  document.body.classList.toggle('revealed',opened);
   if (opened) {
     action.setAttribute('aria-busy','true');
     window.setTimeout(()=>{
       revealTime = performance.now();
       canvas.hidden=false;
-      headline.innerHTML='¡Feliz díaaa<br><em>para ti, gordita!</em>';
-      message.textContent='Porque eres una princesa en todo el sentido, en el cual, humildemente, tu servidor está feliz de compartir contigo. Con cariño, para la princesa que no pude tener Disney, que es la princesa Antunne, la más bonita. ♡';
-      label.textContent='Volver a cerrar la caja';
+      headline.innerHTML='¡Feliz día, <em>mi gordita!</em>';
+      message.textContent='Antuanne, mientras preparaba esta sorpresa, ya me estaba sonriendo de imaginar tu carita al abrirla. Si estuvieras aquí, te pondría la tiara yo mismo y te daría un abrazo de esos que duran un poquito más. Te quiero, mi princesa. ♡';
+      label.textContent='Cerrar la cajita';
       action.removeAttribute('aria-busy');
       redraw();
     },reducedMotion.matches?0:900);
   } else {
     cancelAnimationFrame(frame);
     canvas.hidden=true;
-    headline.innerHTML='Un regalo<br><em>para ti.</em>';
-    message.textContent='Gordita, preparé esta cajita pensando en ti. Toca el botón cuando estés lista. ♡';
+    headline.innerHTML='Para ti, <em>gordita.</em>';
+    message.textContent='Te guardé una sorpresa bajo las estrellas.';
     label.textContent='Abrir mi regalo';
   }
 });
